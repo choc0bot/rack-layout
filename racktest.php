@@ -32,8 +32,10 @@ div {
 
 
 .number {
+  float: left;
   width: 50px;
   padding: 0px;
+  margin: 0px;
 }
 
 .numeral{
@@ -134,6 +136,8 @@ $('.gamma').sortable({
 
 <div class="gamma">
   <h3>12 RU Rack</h3>
+<p>
+</p>
   <div class="number">
     <li class="numeral">1</li>
     <li class="numeral">2</li>
@@ -148,8 +152,9 @@ $('.gamma').sortable({
     <li class="numeral">11</li>
     <li class="numeral">12</li>
   </div>
-
+  
 </div>
+
 <div class="beta">
   <h4>Trash</h4>
 
