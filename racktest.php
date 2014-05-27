@@ -80,15 +80,24 @@ div {
 $(function() {
 $('.alpha').sortable({
   connectWith: '.gamma',
-  remove: function(event, ui) {
-        ui.item.clone().appendTo('.gamma');
-        $(this).sortable('cancel');
-            }
-//  receive: function (event, ui) {
-//    if ($(ui.item).hasClass('special')) {
-//      ui.sender.sortable('cancel');
-//    }
-//  }
+
+  helper: function (e, li) {
+        this.copyHelper = li.clone().insertAfter(li);
+
+        $(this).data('copied', false);
+
+        return li.clone();
+    },
+    stop: function () {
+
+        var copied = $(this).data('copied');
+
+        if (!copied) {
+            this.copyHelper.remove();
+        }
+
+        this.copyHelper = null;
+    }
 });
 
 $('.beta').sortable({
@@ -101,13 +110,11 @@ $('.beta').sortable({
 
 $('.gamma').sortable({
   appendTo: document.body,
-  helper: "clone",
   items: '.ups, .switch, .blank, .tile',
   connectWith: '.alpha, .beta',
-  receive: function (event, ui) {
-    //console.log(event, ui.item);
-    //ui.item.remove(); // remove original item
-  }
+  receive: function (e, ui) {
+        ui.sender.data('copied', true);
+    }
 });
 
 });
