@@ -136,8 +136,6 @@ $('.gamma').sortable({
 
 <div class="gamma">
   <h3>12 RU Rack</h3>
-<p>
-</p>
   <div class="number">
     <li class="numeral">1</li>
     <li class="numeral">2</li>
