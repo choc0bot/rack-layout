@@ -50,8 +50,18 @@ div {
   background: #333;
   color: green;
   display: block;
+  border-style:solid;
+  font-size: 18px;
+  margin: 0 5px 0 0;
+  padding: 10px;
+}
 
-  font-size: 24px;
+.server {
+  background: #333;
+  color: blue;
+  display: block;
+  border-style:solid;
+  font-size: 61px;
   margin: 0 5px 0 0;
   padding: 10px;
 }
@@ -60,18 +70,18 @@ div {
   background: #333;
   color: red;
   display: block;
-
-  font-size: 67px;
+  border-style:solid;
+  font-size: 61px;
   margin: 0 5px 0 0;
   padding: 10px;
 }
 
 .blank {
   background: #333;
-  color: grey;
+  color: gray;
   display: block;
-
-  font-size: 24px;
+  height: 28px;
+  font-size: 16px;
   margin: 0 5px 0 0;
   padding: 10px;
 }
@@ -79,7 +89,11 @@ div {
 </style>
 
 <script>
+
 $(function() {
+$( ".racksize" ).change(function() {
+  alert( "Handler for .change() called." );
+});
 $('.alpha').sortable({
   connectWith: '.gamma',
 
@@ -112,8 +126,8 @@ $('.beta').sortable({
 
 $('.gamma').sortable({
   appendTo: document.body,
-  items: '.ups, .switch, .blank, .tile',
-  connectWith: '.alpha, .beta',
+  items: '.ups, .switch, .blank, .server',
+  connectWith: '.beta',
   receive: function (e, ui) {
         ui.sender.data('copied', true);
     }
@@ -122,12 +136,23 @@ $('.gamma').sortable({
 });
 </script>
 </head>	
-
+    <span class="ui-widget">
+      <label>Rack Size: </label>
+      <select class="racksize">
+        <option value="">Select one...</option>
+        <option value="8">8 RU</option>
+        <option value="12">12 RU</option>
+        <option value="12">38 RU</option>
+        <option value="12">42 RU</option>
+        <option value="12">45 RU</option>
+      </select>
+    </span>
 
 <div class="alpha">
   <li class="switch">Cisco 3750 24 port</li>
   <li class="switch">Cisco 3750 48 port</li>
   <li class="switch">Cisco 3750X 48 port</li>
+  <li class="server">DL380 G7</li>
   <li class="ups">UPS</li>
   <li class="blank">Blank</li>
   <li class="blank">cable management</li>
