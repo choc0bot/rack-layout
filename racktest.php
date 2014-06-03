@@ -92,7 +92,12 @@ div {
 
 $(function() {
 $( ".racksize" ).change(function() {
-  alert( "Handler for .change() called." );
+  var value = $('.racksize :selected').text();
+  alert(value);
+ //$('.number')
+ // for (i=1;i<=value;i++){
+  //  $('<li class="numeral">'i'</li>');
+//}
 });
 $('.alpha').sortable({
   connectWith: '.gamma',
@@ -137,14 +142,14 @@ $('.gamma').sortable({
 </script>
 </head>	
     <span class="ui-widget">
-      <label>Rack Size: </label>
+      <label>Rack Size in RU: </label>
       <select class="racksize">
         <option value="">Select one...</option>
-        <option value="8">8 RU</option>
-        <option value="12">12 RU</option>
-        <option value="12">38 RU</option>
-        <option value="12">42 RU</option>
-        <option value="12">45 RU</option>
+        <option value="8">8</option>
+        <option value="12">12</option>
+        <option value="12">38</option>
+        <option value="12">42</option>
+        <option value="12">45</option>
       </select>
     </span>
 
