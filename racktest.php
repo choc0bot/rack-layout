@@ -39,9 +39,9 @@ div {
 }
 
 .numeral{
-  font-size: 24px;
-  margin: 0 0px 0 0;
-  padding: 7px;
+  height: 12px;
+  font-size: 12px;
+  padding: 4px;
   list-style-type:none;
   border-style:solid;
 }
@@ -51,9 +51,8 @@ div {
   color: green;
   display: block;
   border-style:solid;
-  font-size: 18px;
-  margin: 0 5px 0 0;
-  padding: 10px;
+  height: 12px;
+  padding: 4px;
 }
 
 .server {
@@ -61,9 +60,8 @@ div {
   color: blue;
   display: block;
   border-style:solid;
-  font-size: 61px;
-  margin: 0 5px 0 0;
-  padding: 10px;
+  height: 38px;
+  padding: 4px;
 }
 
 .ups {
@@ -71,19 +69,34 @@ div {
   color: red;
   display: block;
   border-style:solid;
-  font-size: 61px;
-  margin: 0 5px 0 0;
-  padding: 10px;
+  height: 38px;
+  padding: 4px;
+}
+
+.dpatch {
+  background: #333;
+  color: white;
+  display: block;
+  border-style:solid;
+  height: 12px;
+  padding: 4px;
+}
+.vpatch {
+  background: #333;
+  color: yellow;
+  display: block;
+  border-style:solid;
+  height: 12px;
+  padding: 4px;
 }
 
 .blank {
   background: #333;
   color: gray;
   display: block;
-  height: 28px;
-  font-size: 16px;
-  margin: 0 5px 0 0;
-  padding: 10px;
+  border-style:solid;
+  height: 12px;
+  padding: 4px;
 }
 
 </style>
@@ -93,11 +106,11 @@ div {
 $(function() {
 $( ".racksize" ).change(function() {
   var value = $('.racksize :selected').text();
-  alert(value);
- //$('.number')
- // for (i=1;i<=value;i++){
-  //  $('<li class="numeral">'i'</li>');
-//}
+  //alert(value);
+  $('.number').empty();
+  for (i=1;i<=value;i++){
+    $('.number').append('<li class="numeral">'+ i +'</li>');
+  }
 });
 $('.alpha').sortable({
   connectWith: '.gamma',
@@ -131,7 +144,7 @@ $('.beta').sortable({
 
 $('.gamma').sortable({
   appendTo: document.body,
-  items: '.ups, .switch, .blank, .server',
+  items: '.ups, .switch, .blank, .server, .dpatch, .vpatch',
   connectWith: '.beta',
   receive: function (e, ui) {
         ui.sender.data('copied', true);
@@ -141,8 +154,24 @@ $('.gamma').sortable({
 });
 </script>
 </head>	
-    <span class="ui-widget">
-      <label>Rack Size in RU: </label>
+
+
+<div class="alpha">
+  <li class="switch">Cisco 3750 24 port</li>
+  <li class="switch">Cisco 3750 48 port</li>
+  <li class="switch">Cisco 3750X 48 port</li>
+  <li class="server">DL380 G7</li>
+  <li class="ups">UPS</li>
+  <li class="dpatch">Data Patch Panel</li>
+  <li class="vpatch">Voice  Patch Panel</li>
+  <li class="blank">Blank</li>
+  <li class="blank">cable management</li>
+  <li class="blank">tray</li>
+</div>
+
+<div class="gamma">
+  <h3>
+      <span class="ui-widget">
       <select class="racksize">
         <option value="">Select one...</option>
         <option value="8">8</option>
@@ -152,33 +181,8 @@ $('.gamma').sortable({
         <option value="12">45</option>
       </select>
     </span>
-
-<div class="alpha">
-  <li class="switch">Cisco 3750 24 port</li>
-  <li class="switch">Cisco 3750 48 port</li>
-  <li class="switch">Cisco 3750X 48 port</li>
-  <li class="server">DL380 G7</li>
-  <li class="ups">UPS</li>
-  <li class="blank">Blank</li>
-  <li class="blank">cable management</li>
-  <li class="blank">tray</li>
-</div>
-
-<div class="gamma">
-  <h3>12 RU Rack</h3>
+  RU Rack</h3>
   <div class="number">
-    <li class="numeral">1</li>
-    <li class="numeral">2</li>
-    <li class="numeral">3</li>
-    <li class="numeral">4</li>
-    <li class="numeral">5</li>
-    <li class="numeral">6</li>
-    <li class="numeral">7</li>
-    <li class="numeral">8</li>
-    <li class="numeral">9</li>
-    <li class="numeral">10</li>
-    <li class="numeral">11</li>
-    <li class="numeral">12</li>
   </div>
   
 </div>
