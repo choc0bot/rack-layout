@@ -31,6 +31,11 @@ div {
 }
 
 
+
+.racksize {
+    width: 60px;
+}
+
 .number {
   float: left;
   width: 50px;
@@ -40,63 +45,61 @@ div {
 
 .numeral{
   height: 12px;
-  font-size: 12px;
-  padding: 4px;
+  padding: 8px;
   list-style-type:none;
   border-style:solid;
 }
 
-.switch {
+.oneru {
+  text-align:center;
   background: #333;
-  color: green;
   display: block;
   border-style:solid;
   height: 12px;
-  padding: 4px;
+  padding: 8px;
+}
+
+.tworu {
+  text-align:center;
+  background: #333;
+  display: block;
+  border-style:solid;
+  height: 46px;
+  padding: 8px;
+}
+
+.threeru {
+  text-align:center;
+  background: #333;
+  display: block;
+  border-style:solid;
+  height: 80px;
+  padding: 8px;
+}
+
+.switch {
+  color: #32851B;
+
 }
 
 .server {
-  background: #333;
-  color: blue;
-  display: block;
-  border-style:solid;
-  height: 38px;
-  padding: 4px;
+  color: #003399;
 }
 
 .ups {
-  background: #333;
-  color: red;
-  display: block;
-  border-style:solid;
-  height: 38px;
-  padding: 4px;
+  color: #800000;
+
 }
 
 .dpatch {
-  background: #333;
   color: white;
-  display: block;
-  border-style:solid;
-  height: 12px;
-  padding: 4px;
 }
 .vpatch {
-  background: #333;
-  color: yellow;
-  display: block;
-  border-style:solid;
-  height: 12px;
-  padding: 4px;
+  color: #C7C716;
 }
 
 .blank {
-  background: #333;
   color: gray;
-  display: block;
-  border-style:solid;
-  height: 12px;
-  padding: 4px;
 }
 
 </style>
@@ -157,16 +160,17 @@ $('.gamma').sortable({
 
 
 <div class="alpha">
-  <li class="switch">Cisco 3750 24 port</li>
-  <li class="switch">Cisco 3750 48 port</li>
-  <li class="switch">Cisco 3750X 48 port</li>
-  <li class="server">DL380 G7</li>
-  <li class="ups">UPS</li>
-  <li class="dpatch">Data Patch Panel</li>
-  <li class="vpatch">Voice  Patch Panel</li>
-  <li class="blank">Blank</li>
-  <li class="blank">cable management</li>
-  <li class="blank">tray</li>
+  <li class="oneru switch">Cisco 3750 24 port</li>
+  <li class="oneru switch">Cisco 3750 48 port</li>
+  <li class="oneru switch">Cisco 3750X 48 port</li>
+  <li class="tworu server">DL380 G7</li>
+  <li class="tworu ups">2KVA UPS</li>
+  <li class="threeru ups">3KVA UPS</li>
+  <li class="oneru dpatch">Data Patch Panel</li>
+  <li class="oneru vpatch">Voice  Patch Panel</li>
+  <li class="oneru blank">Blank</li>
+  <li class="oneru blank">cable management</li>
+  <li class="oneru blank">tray</li>
 </div>
 
 <div class="gamma">
