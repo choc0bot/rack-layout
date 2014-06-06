@@ -52,7 +52,7 @@ div {
 
 .oneru {
   text-align:center;
-  background: #333;
+  background: #454544;
   display: block;
   border-style:solid;
   height: 12px;
@@ -61,7 +61,7 @@ div {
 
 .tworu {
   text-align:center;
-  background: #333;
+  background: #454544;
   display: block;
   border-style:solid;
   height: 46px;
@@ -70,7 +70,7 @@ div {
 
 .threeru {
   text-align:center;
-  background: #333;
+  background: #454544;
   display: block;
   border-style:solid;
   height: 80px;
@@ -87,26 +87,55 @@ div {
 }
 
 .ups {
-  color: #800000;
+  color: #FD3F49;
 
 }
 
 .dpatch {
-  color: white;
+  color: #6949D7;
 }
 .vpatch {
   color: #C7C716;
 }
 
-.blank {
+.blank{
+  color: #CCCCCC
+}
+
+.misc {
   color: gray;
 }
 
+button {
+  float: right;
+  display: inline-block;
+  margin: 0 0px 0 0;
+  font-size: 14px;
+  font-family: "Bitter",serif;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+button:focus {
+  outline: none
+}
 </style>
 
 <script>
 
 $(function() {
+
+$( document ).ready(function() {
+  var value = $('.racksize :selected').text();
+  //alert(value);
+  $('.number').empty();
+  for (i=1;i<=value;i++){
+    $('.number').append('<li class="numeral">'+ i +'</li>');
+  }
+
+});
+
 $( ".racksize" ).change(function() {
   var value = $('.racksize :selected').text();
   //alert(value);
@@ -115,6 +144,7 @@ $( ".racksize" ).change(function() {
     $('.number').append('<li class="numeral">'+ i +'</li>');
   }
 });
+
 $('.alpha').sortable({
   connectWith: '.gamma',
 
@@ -147,12 +177,21 @@ $('.beta').sortable({
 
 $('.gamma').sortable({
   appendTo: document.body,
-  items: '.ups, .switch, .blank, .server, .dpatch, .vpatch',
+  items: '.ups, .switch, .blank, .server, .dpatch, .vpatch, .misc',
   connectWith: '.beta',
   receive: function (e, ui) {
         ui.sender.data('copied', true);
-    }
+  }
+
 });
+
+$("#button").click( function()
+  {
+  var value = 12 + $('.gamma .oneru').length + 2 * $('.gamma .tworu').length + 3 * $('.gamma .threeru').length; 
+  $('.gamma li').slice(24).remove();
+  });
+
+
 
 });
 </script>
@@ -169,26 +208,27 @@ $('.gamma').sortable({
   <li class="oneru dpatch">Data Patch Panel</li>
   <li class="oneru vpatch">Voice  Patch Panel</li>
   <li class="oneru blank">Blank</li>
-  <li class="oneru blank">cable management</li>
-  <li class="oneru blank">tray</li>
+  <li class="oneru misc">cable management</li>
+  <li class="oneru misc">tray</li>
 </div>
 
 <div class="gamma">
   <h3>
       <span class="ui-widget">
       <select class="racksize">
-        <option value="">Select one...</option>
         <option value="8">8</option>
-        <option value="12">12</option>
-        <option value="12">38</option>
-        <option value="12">42</option>
-        <option value="12">45</option>
+        <option value="12" selected>12</option>
+        <option value="38">38</option>
+        <option value="42" >42</option>
+        <option value="45">45</option>
       </select>
     </span>
-  RU Rack</h3>
+  RU Rack
+  <button id="button">trim</button>
+</h3>
+
   <div class="number">
   </div>
-  
 </div>
 
 <div class="beta">
