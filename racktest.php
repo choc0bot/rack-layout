@@ -21,7 +21,7 @@ body {
 }
 
 
-div {
+.rackdiv {
   background-color: #ccc;
   margin: 10px;
   padding: 10px;
@@ -99,7 +99,8 @@ div {
 }
 
 .blank{
-  color: #CCCCCC
+  color: #CCCCCC;
+  background: gray;
 }
 
 .misc {
@@ -130,8 +131,10 @@ $( document ).ready(function() {
   var value = $('.racksize :selected').text();
   //alert(value);
   $('.number').empty();
+  $('.gamma li').remove();
   for (i=1;i<=value;i++){
     $('.number').append('<li class="numeral">'+ i +'</li>');
+    $('.gamma').append('<li class="oneru blank">Blank</li>');
   }
 
 });
@@ -140,8 +143,10 @@ $( ".racksize" ).change(function() {
   var value = $('.racksize :selected').text();
   //alert(value);
   $('.number').empty();
+  //$('.gamma li').remove();
   for (i=1;i<=value;i++){
     $('.number').append('<li class="numeral">'+ i +'</li>');
+    $('.gamma').append('<li class="oneru blank">Blank</li>');
   }
 });
 
@@ -185,20 +190,56 @@ $('.gamma').sortable({
 
 });
 
-$("#button").click( function()
+
+
+$(".trim").click( function()
   {
-  var value = 12 + $('.gamma .oneru').length + 2 * $('.gamma .tworu').length + 3 * $('.gamma .threeru').length; 
-  $('.gamma li').slice(24).remove();
+  var rsize = parseInt($('.racksize :selected').text());
+  var value = rsize + $('.gamma .oneru').length + 2 * $('.gamma .tworu').length + 3 * $('.gamma .threeru').length; 
+  //$('.count').append(value);
+  while (value > (2 * rsize)){
+    var lilength = $('.gamma li').length - 1;
+    //$('.count').append('<li>'+ lilength +'</li>');
+    $('.gamma li').slice(lilength).remove();
+    var rsize = parseInt($('.racksize :selected').text());
+    var value = rsize + $('.gamma .oneru').length + 2 * $('.gamma .tworu').length + 3 * $('.gamma .threeru').length; 
+  }
   });
 
+$(".clear").click( function()
+    {
+    $( "#dialog-confirm" ).dialog({
+      resizable: false,
+      height:140,
+      modal: true,
+      buttons: {
+        "Yes": function() {
+              var value = $('.racksize :selected').text();
+              $('.gamma li').remove();
+              $('.number').empty();
+                for (i=1;i<=value;i++){
+              $('.number').append('<li class="numeral">'+ i +'</li>');
+              $('.gamma').append('<li class="oneru blank">Blank</li>');
+                                      }
+              $( this ).dialog( "close" );
+        },
+        No: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+
+})
+}); 
 
 
-});
 </script>
 </head>	
 
+<div id="dialog-confirm" title="Clear?">
+</div>
 
-<div class="alpha">
+<div class="alpha rackdiv">
   <li class="oneru switch">Cisco 3750 24 port</li>
   <li class="oneru switch">Cisco 3750 48 port</li>
   <li class="oneru switch">Cisco 3750X 48 port</li>
@@ -212,7 +253,7 @@ $("#button").click( function()
   <li class="oneru misc">tray</li>
 </div>
 
-<div class="gamma">
+<div class="gamma rackdiv">
   <h3>
       <span class="ui-widget">
       <select class="racksize">
@@ -224,14 +265,16 @@ $("#button").click( function()
       </select>
     </span>
   RU Rack
-  <button id="button">trim</button>
+  <button class="trim" id="button">trim</button>
+  <button class="clear" id="button">clear</button>
+  <div class="count"></div>
 </h3>
 
   <div class="number">
   </div>
 </div>
 
-<div class="beta">
+<div class="beta rackdiv">
   <h4>Trash</h4>
 
 </div>
