@@ -236,16 +236,20 @@ $(".clear").click( function()
 </script>
 </head>	
 
-<div id="dialog-confirm" title="Clear?">
+<div id="dialog-confirm" title="Delete all?">
 </div>
 
 <div class="alpha rackdiv">
+  <li class="heading">Network</li>
   <li class="oneru switch">Cisco 3750 24 port</li>
   <li class="oneru switch">Cisco 3750 48 port</li>
   <li class="oneru switch">Cisco 3750X 48 port</li>
+  <li class="heading">Servers</li>
   <li class="tworu server">DL380 G7</li>
+  <li class="heading">UPS</li>
   <li class="tworu ups">2KVA UPS</li>
   <li class="threeru ups">3KVA UPS</li>
+  <li class="heading">Misc</li>
   <li class="oneru dpatch">Data Patch Panel</li>
   <li class="oneru vpatch">Voice  Patch Panel</li>
   <li class="oneru blank">Blank</li>
@@ -265,8 +269,8 @@ $(".clear").click( function()
       </select>
     </span>
   RU Rack
-  <button class="trim" id="button">trim</button>
-  <button class="clear" id="button">clear</button>
+  <button class="trim" title="Delete all items outside the designated rack space" id="button">trim</button>
+  <button class="clear"  title="Delete all items and start again with a blank rack" id="button">clear</button>
   <div class="count"></div>
 </h3>
 
