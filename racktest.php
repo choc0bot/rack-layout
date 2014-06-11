@@ -124,8 +124,8 @@ $(".clear").click( function()
 $(".save").click( function()
     {
       var rackdiagram = $('.gamma').html();
-      var rackname = $('.rackname').html();
-      alert(rackname);
+      var rackname = $('.rackname').val();
+      alert('saved '+ rackname);
       $.post("input_racksave.php", {rn: rackname, rd: rackdiagram});
   });
 
@@ -168,8 +168,8 @@ $(".save").click( function()
 
 <div class="gamma rackdiv">
 
-  <div class="number">
-  </div>
+  <div class="number"></div>
+
 </div>
 
 <div class="beta rackdiv">
@@ -184,7 +184,7 @@ $(".save").click( function()
       </select>
     </span>
   RU Rack</h5>
-  <input type="text" placeholder="rack name" class="rackname">
+  <input type="text" placeholder="rack name" class="rackname"></imput>
   <span>
   <button class="save btn btn-block btn-lg btn-success" id="button">save</button>
   <button class="trim btn btn-block btn-lg btn-warning" title="Delete all items outside the designated rack space" id="button">trim</button>
