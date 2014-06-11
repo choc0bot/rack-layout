@@ -8,120 +8,9 @@
 	
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="rack.css" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-<style>
 
-html {
-  height: 100%;
-}
-
-body {
-  font-family: sans-serif;
-  min-height: 100%;
-}
-
-
-.rackdiv {
-  background-color: #ccc;
-  margin: 10px;
-  padding: 10px;
-  float: left;
-  width: 30%;
-
-}
-
-
-
-.racksize {
-    width: 60px;
-}
-
-.number {
-  float: left;
-  width: 50px;
-  padding: 0px;
-  margin: 0px;
-}
-
-.numeral{
-  height: 12px;
-  padding: 8px;
-  list-style-type:none;
-  border-style:solid;
-}
-
-.oneru {
-  text-align:center;
-  background: #454544;
-  display: block;
-  border-style:solid;
-  height: 12px;
-  padding: 8px;
-}
-
-.tworu {
-  text-align:center;
-  background: #454544;
-  display: block;
-  border-style:solid;
-  height: 46px;
-  padding: 8px;
-}
-
-.threeru {
-  text-align:center;
-  background: #454544;
-  display: block;
-  border-style:solid;
-  height: 80px;
-  padding: 8px;
-}
-
-.switch {
-  color: #32851B;
-
-}
-
-.server {
-  color: #003399;
-}
-
-.ups {
-  color: #FD3F49;
-
-}
-
-.dpatch {
-  color: #6949D7;
-}
-.vpatch {
-  color: #C7C716;
-}
-
-.blank{
-  color: #CCCCCC;
-  background: gray;
-}
-
-.misc {
-  color: gray;
-}
-
-button {
-  float: right;
-  display: inline-block;
-  margin: 0 0px 0 0;
-  font-size: 14px;
-  font-family: "Bitter",serif;
-  line-height: 1.8;
-  appearance: none;
-  box-shadow: none;
-  border-radius: 0;
-}
-button:focus {
-  outline: none
-}
-</style>
 
 <script>
 
@@ -229,8 +118,18 @@ $(".clear").click( function()
       }
     });
 
+});
+
+$(".save").click( function()
+    {
+      var rackdiagram = $('.gamma').html();
+      var rackname = $('#rackname').html();
+      alert(rackname);
+      $.post("input_racksave.php", {rn: rackname, rd: rackdiagram});
+  });
+
 })
-}); 
+
 
 
 </script>
@@ -244,6 +143,14 @@ $(".clear").click( function()
   <li class="oneru switch">Cisco 3750 24 port</li>
   <li class="oneru switch">Cisco 3750 48 port</li>
   <li class="oneru switch">Cisco 3750X 48 port</li>
+  <li class="oneru switch">Cisco 1841</li>
+  <li class="oneru switch">Cisco 2960</li>
+  <li class="tworu switch">Cisco 2910</li>
+  <li class="oneru switch">Cisco ASR 1000</li>
+  <li class="oneru switch">Cisco Nexus 5000</li>
+  <li class="threeru switch">Cisco 3925</li>
+  <li class="threeru switch">Cisco 3925 48 port</li>
+  <li class="oneru switch">Juniper SRX240</li>
   <li class="heading">Servers</li>
   <li class="tworu server">DL380 G7</li>
   <li class="heading">UPS</li>
@@ -269,9 +176,10 @@ $(".clear").click( function()
       </select>
     </span>
   RU Rack
+  <span id="rackname" contenteditable>your rack name</span>
+  <button class="save" id="button">save</button>
   <button class="trim" title="Delete all items outside the designated rack space" id="button">trim</button>
   <button class="clear"  title="Delete all items and start again with a blank rack" id="button">clear</button>
-  <div class="count"></div>
 </h3>
 
   <div class="number">

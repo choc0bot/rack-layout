@@ -1,0 +1,113 @@
+<style>
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  min-height: 100%;
+}
+
+
+.rackdiv {
+  background-color: #ccc;
+  margin: 10px;
+  padding: 10px;
+  float: left;
+  width: 30%;
+
+}
+
+
+
+.racksize {
+    width: 60px;
+}
+
+.number {
+  float: left;
+  width: 50px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.numeral{
+  height: 12px;
+  padding: 8px;
+  list-style-type:none;
+  border-style:solid;
+}
+
+.oneru {
+  text-align:center;
+  background: #454544;
+  display: block;
+  border-style:solid;
+  height: 12px;
+  padding: 8px;
+}
+
+.tworu {
+  text-align:center;
+  background: #454544;
+  display: block;
+  border-style:solid;
+  height: 46px;
+  padding: 8px;
+}
+
+.threeru {
+  text-align:center;
+  background: #454544;
+  display: block;
+  border-style:solid;
+  height: 80px;
+  padding: 8px;
+}
+
+.switch {
+  color: #32851B;
+
+}
+
+.server {
+  color: #003399;
+}
+
+.ups {
+  color: #FD3F49;
+
+}
+
+.dpatch {
+  color: #6949D7;
+}
+.vpatch {
+  color: #C7C716;
+}
+
+.blank{
+  color: #CCCCCC;
+  background: gray;
+}
+
+.misc {
+  color: gray;
+}
+
+button {
+  float: right;
+  display: inline-block;
+  margin: 0 0px 0 0;
+  font-size: 14px;
+  font-family: "Bitter",serif;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+button:focus {
+  outline: none
+}
+</style>
