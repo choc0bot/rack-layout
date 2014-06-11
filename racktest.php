@@ -9,6 +9,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
 <link rel="stylesheet" href="rack.css" type="text/css">
+<link rel="stylesheet" href="http://sitedbase/css/Flat-UI-master/css/flat-ui.css" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
 
@@ -41,7 +42,7 @@ $( ".racksize" ).change(function() {
 
 $('.alpha').sortable({
   connectWith: '.gamma',
-
+  items: '.ups, .switch, .blank, .server, .dpatch, .vpatch, .fpatch, .misc',
   helper: function (e, li) {
         this.copyHelper = li.clone().insertAfter(li);
 
@@ -71,7 +72,7 @@ $('.beta').sortable({
 
 $('.gamma').sortable({
   appendTo: document.body,
-  items: '.ups, .switch, .blank, .server, .dpatch, .vpatch, .misc',
+  items: '.ups, .switch, .blank, .server, .dpatch, .vpatch, .fpatch, .misc',
   connectWith: '.beta',
   receive: function (e, ui) {
         ui.sender.data('copied', true);
@@ -123,7 +124,7 @@ $(".clear").click( function()
 $(".save").click( function()
     {
       var rackdiagram = $('.gamma').html();
-      var rackname = $('#rackname').html();
+      var rackname = $('.rackname').html();
       alert(rackname);
       $.post("input_racksave.php", {rn: rackname, rd: rackdiagram});
   });
@@ -140,17 +141,17 @@ $(".save").click( function()
 
 <div class="alpha rackdiv">
   <li class="heading">Network</li>
-  <li class="oneru switch">Cisco 3750 24 port</li>
-  <li class="oneru switch">Cisco 3750 48 port</li>
-  <li class="oneru switch">Cisco 3750X 48 port</li>
-  <li class="oneru switch">Cisco 1841</li>
-  <li class="oneru switch">Cisco 2960</li>
-  <li class="tworu switch">Cisco 2910</li>
-  <li class="oneru switch">Cisco ASR 1000</li>
-  <li class="oneru switch">Cisco Nexus 5000</li>
-  <li class="threeru switch">Cisco 3925</li>
-  <li class="threeru switch">Cisco 3925 48 port</li>
-  <li class="oneru switch">Juniper SRX240</li>
+    <li class="oneru switch">Cisco 3750 24 port</li>
+    <li class="oneru switch">Cisco 3750 48 port</li>
+    <li class="oneru switch">Cisco 3750X 48 port</li>
+    <li class="oneru switch">Cisco 1841</li>
+    <li class="oneru switch">Cisco 2960</li>
+    <li class="tworu switch">Cisco 2950</li>
+    <li class="oneru switch">Cisco ASR 1000</li>
+    <li class="oneru switch">Cisco Nexus 5000</li>
+    <li class="threeru switch">Cisco 3925</li>
+    <li class="threeru switch">Cisco 3925 48 port</li>
+    <li class="oneru switch">Juniper SRX240</li>
   <li class="heading">Servers</li>
   <li class="tworu server">DL380 G7</li>
   <li class="heading">UPS</li>
@@ -159,13 +160,20 @@ $(".save").click( function()
   <li class="heading">Misc</li>
   <li class="oneru dpatch">Data Patch Panel</li>
   <li class="oneru vpatch">Voice  Patch Panel</li>
+  <li class="oneru fpatch">Fibre Panel</li>
   <li class="oneru blank">Blank</li>
   <li class="oneru misc">cable management</li>
   <li class="oneru misc">tray</li>
 </div>
 
 <div class="gamma rackdiv">
-  <h3>
+
+  <div class="number">
+  </div>
+</div>
+
+<div class="beta rackdiv">
+    <h5>
       <span class="ui-widget">
       <select class="racksize">
         <option value="8">8</option>
@@ -175,19 +183,16 @@ $(".save").click( function()
         <option value="45">45</option>
       </select>
     </span>
-  RU Rack
-  <span id="rackname" contenteditable>your rack name</span>
-  <button class="save" id="button">save</button>
-  <button class="trim" title="Delete all items outside the designated rack space" id="button">trim</button>
-  <button class="clear"  title="Delete all items and start again with a blank rack" id="button">clear</button>
-</h3>
-
-  <div class="number">
-  </div>
-</div>
-
-<div class="beta rackdiv">
-  <h4>Trash</h4>
+  RU Rack</h5>
+  <input type="text" placeholder="rack name" class="rackname">
+  <span>
+  <button class="save btn btn-block btn-lg btn-success" id="button">save</button>
+  <button class="trim btn btn-block btn-lg btn-warning" title="Delete all items outside the designated rack space" id="button">trim</button>
+  <button class="clear btn btn-block btn-lg btn-danger"  title="Delete all items and start again with a blank rack" id="button">clear</button>
+</span>
+<div></br></div>
+<div class="btn btn-block btn-lg btn-inverse"></div>
+<h5>Trash</h5>
 
 </div>
 

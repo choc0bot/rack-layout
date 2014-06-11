@@ -6,12 +6,13 @@ html {
 
 body {
   font-family: sans-serif;
+  font-size: 1em;
+  /*font-size: 12px;*/
   min-height: 100%;
 }
 
-
 .rackdiv {
-  background-color: #ccc;
+  background-color: #bdc3c7;
   margin: 10px;
   padding: 10px;
   float: left;
@@ -19,10 +20,8 @@ body {
 
 }
 
-
-
 .racksize {
-    width: 60px;
+    width: 70px;
 }
 
 .number {
@@ -33,8 +32,9 @@ body {
 }
 
 .numeral{
+  color: #bdc3c7;
   height: 12px;
-  padding: 8px;
+  padding: 12px;
   list-style-type:none;
   border-style:solid;
 }
@@ -45,7 +45,7 @@ body {
   display: block;
   border-style:solid;
   height: 12px;
-  padding: 8px;
+  padding: 12px;
 }
 
 .tworu {
@@ -53,8 +53,8 @@ body {
   background: #454544;
   display: block;
   border-style:solid;
-  height: 46px;
-  padding: 8px;
+  height: 54px;
+  padding: 12px;
 }
 
 .threeru {
@@ -62,29 +62,34 @@ body {
   background: #454544;
   display: block;
   border-style:solid;
-  height: 80px;
-  padding: 8px;
+  height: 96px;
+  padding: 12px;
 }
 
 .switch {
-  color: #32851B;
+  color: #27ae60;
 
 }
 
 .server {
-  color: #003399;
+  color: #3498db;
 }
 
 .ups {
-  color: #FD3F49;
+  color: #e74c3c;
 
 }
 
 .dpatch {
-  color: #6949D7;
+  color: #9b59b6;
 }
+
 .vpatch {
-  color: #C7C716;
+  color: #f1c40f;
+}
+
+.fpatch {
+  color: #e67e22;
 }
 
 .blank{
@@ -93,7 +98,7 @@ body {
 }
 
 .misc {
-  color: gray;
+  color: #7f8c8d;
 }
 
 button {
