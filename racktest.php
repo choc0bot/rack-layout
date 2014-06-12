@@ -98,7 +98,7 @@ $(".trim").click( function()
 
 $(".clear").click( function()
     {
-    $( "#dialog-confirm" ).dialog({
+    $( ".dialog-confirm" ).dialog({
       resizable: false,
       height:140,
       modal: true,
@@ -129,6 +129,15 @@ $(".save").click( function()
       $.post("input_racksave.php", {rn: rackname, rd: rackdiagram});
   });
 
+
+
+$(function() {
+   $( "#accordion" ).accordion();
+  });
+
+
+
+
 })
 
 
@@ -136,34 +145,44 @@ $(".save").click( function()
 </script>
 </head>	
 
-<div id="dialog-confirm" title="Delete all?">
-</div>
+<div class="dialog-confirm" title="Delete all?"></div>
+
 
 <div class="alpha rackdiv">
-  <li class="heading">Network</li>
-    <li class="oneru switch">Cisco 3750 24 port</li>
-    <li class="oneru switch">Cisco 3750 48 port</li>
-    <li class="oneru switch">Cisco 3750X 48 port</li>
-    <li class="oneru switch">Cisco 1841</li>
-    <li class="oneru switch">Cisco 2960</li>
-    <li class="tworu switch">Cisco 2950</li>
-    <li class="oneru switch">Cisco ASR 1000</li>
-    <li class="oneru switch">Cisco Nexus 5000</li>
-    <li class="threeru switch">Cisco 3925</li>
-    <li class="threeru switch">Cisco 3925 48 port</li>
-    <li class="oneru switch">Juniper SRX240</li>
-  <li class="heading">Servers</li>
-  <li class="tworu server">DL380 G7</li>
-  <li class="heading">UPS</li>
-  <li class="tworu ups">2KVA UPS</li>
-  <li class="threeru ups">3KVA UPS</li>
-  <li class="heading">Misc</li>
-  <li class="oneru dpatch">Data Patch Panel</li>
-  <li class="oneru vpatch">Voice  Patch Panel</li>
-  <li class="oneru fpatch">Fibre Panel</li>
-  <li class="oneru blank">Blank</li>
-  <li class="oneru misc">cable management</li>
-  <li class="oneru misc">tray</li>
+  <div id="accordion">
+    <h5>Network</h5>
+      <div>
+        <li class="oneru switch">Cisco 3750 24 port</li>
+        <li class="oneru switch">Cisco 3750 48 port</li>
+        <li class="oneru switch">Cisco 3750X 48 port</li>
+        <li class="oneru switch">Cisco 1841</li>
+        <li class="oneru switch">Cisco 2960</li>
+        <li class="tworu switch">Cisco 2950</li>
+        <li class="oneru switch">Cisco ASR 1000</li>
+        <li class="oneru switch">Cisco Nexus 5000</li>
+        <li class="threeru switch">Cisco 3925</li>
+        <li class="threeru switch">Cisco 3925 48 port</li>
+        <li class="oneru switch">Juniper SRX240</li>
+      </div>
+    <h5>Servers</h5>
+      <div>
+        <li class="tworu server">DL380 G7</li>
+      </div>
+    <h5>UPS</h5>
+      <div>
+        <li class="tworu ups">2KVA UPS</li>
+        <li class="threeru ups">3KVA UPS</li>
+      </div>
+    <h5>Misc</h5>
+      <div>
+        <li class="oneru dpatch">Data Patch Panel</li>
+        <li class="oneru vpatch">Voice  Patch Panel</li>
+        <li class="oneru fpatch">Fibre Panel</li>
+        <li class="oneru blank">Blank</li>
+        <li class="oneru misc">cable management</li>
+        <li class="oneru misc">tray</li>
+      </div>
+  </div>
 </div>
 
 <div class="gamma rackdiv">
@@ -191,9 +210,9 @@ $(".save").click( function()
   <button class="clear btn btn-block btn-lg btn-danger"  title="Delete all items and start again with a blank rack" id="button">clear</button>
 </span>
 <div></br></div>
-<div class="btn btn-block btn-lg btn-inverse"></div>
+<div height=2px class="btn btn-block btn-lg btn-inverse"></div>
 <h5>Trash</h5>
-
+<span class="trash"><img src="./image/recyclebin.png"  height="128"></span>
 </div>
 
 </html>
