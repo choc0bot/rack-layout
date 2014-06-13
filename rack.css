@@ -27,8 +27,7 @@ li {
   margin: 10px;
   padding: 10px;
   float: left;
-  width: 20%;
-    border-color: #bdc3c7;
+  border-color: #bdc3c7;
   border-style:solid;
   border-width: 1px;
 }
@@ -36,9 +35,18 @@ li {
 .gamma {
   background-color: #000000;
   width: 40%;
+
+
   }
 
+.alpha {
+  width: 25%;
+  float: left;
+}
 
+.beta {
+  float: right;
+}
 
 .racksize {
     width: 70px;
@@ -110,18 +118,4 @@ li {
   color: #7f8c8d;
 }
 
-button {
-  float: right;
-  display: inline-block;
-  margin: 0 0px 0 0;
-  font-size: 14px;
-  font-family: "Bitter",serif;
-  line-height: 1.8;
-  appearance: none;
-  box-shadow: none;
-  border-radius: 0;
-}
-button:focus {
-  outline: none
-}
 </style>
