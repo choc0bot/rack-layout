@@ -7,10 +7,12 @@
 		<title>Rack Diagram</title>
 	
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-<link rel="stylesheet" href="rack.css" type="text/css">
-<link rel="stylesheet" href="http://sitedbase/css/Flat-UI-master/css/flat-ui.css" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>
+<!--<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />-->
+<!--<link rel="stylesheet" href="http://sitedbase/css/Flat-UI-master/css/flat-ui.css" type="text/css">-->
+<link rel="stylesheet" href="./css/jquery-mobile-flat-ui-theme/generated/jquery.mobile.flatui.min.css" type="text/css">
+<link rel="stylesheet" href="rack.css" type="text/css">
 
 
 <script>
@@ -63,6 +65,7 @@ $('.alpha').sortable({
 });
 
 $('.beta').sortable({
+  items: '',
   connectWith: '.gamma',
   receive: function (event, ui) {
      console.log(event, ui.item);
@@ -132,7 +135,7 @@ $(".save").click( function()
 
 
 $(function() {
-   $( "#accordion" ).accordion();
+   $( "#accordion" ).accordion({active: false, collapsible: true});
   });
 
 
@@ -149,9 +152,10 @@ $(function() {
 
 
 <div class="alpha rackdiv">
-  <div id="accordion">
-    <h5>Network</h5>
-      <div>
+  <div data-role="collapsible-set" data-theme="b" data-content-theme="b">
+    <div data-role="collapsible" data-collapsed-icon="flat-plus" data-expanded-icon="flat-cross" data-collapsed="false">
+    <h5> Network</h5>
+      <div >
         <li class="oneru switch">Cisco 3750 24 port</li>
         <li class="oneru switch">Cisco 3750 48 port</li>
         <li class="oneru switch">Cisco 3750X 48 port</li>
@@ -164,16 +168,22 @@ $(function() {
         <li class="threeru switch">Cisco 3925 48 port</li>
         <li class="oneru switch">Juniper SRX240</li>
       </div>
-    <h5>Servers</h5>
+    </div>
+    <div data-role="collapsible" data-collapsed-icon="flat-plus" data-expanded-icon="flat-cross">
+    <h5> Servers</h5>
       <div>
         <li class="tworu server">DL380 G7</li>
       </div>
-    <h5>UPS</h5>
+    </div>
+    <div data-role="collapsible" data-collapsed-icon="flat-plus" data-expanded-icon="flat-cross">
+    <h5> UPS</h5>
       <div>
         <li class="tworu ups">2KVA UPS</li>
         <li class="threeru ups">3KVA UPS</li>
       </div>
-    <h5>Misc</h5>
+    </div>
+    <div data-role="collapsible" data-collapsed-icon="flat-plus" data-expanded-icon="flat-cross">
+    <h5> Misc</h5>
       <div>
         <li class="oneru dpatch">Data Patch Panel</li>
         <li class="oneru vpatch">Voice  Patch Panel</li>
@@ -182,16 +192,19 @@ $(function() {
         <li class="oneru misc">cable management</li>
         <li class="oneru misc">tray</li>
       </div>
+    </div>
   </div>
 </div>
 
 <div class="gamma rackdiv">
-
   <div class="number"></div>
-
 </div>
 
+
 <div class="beta rackdiv">
+    <div data-role="fieldcontain" >
+        <input type="range" name="slider" value="12" min="6" max="48" data-highlight="true" />
+    </div>
     <h5>
       <span class="ui-widget">
       <select class="racksize">
@@ -205,9 +218,9 @@ $(function() {
   RU Rack</h5>
   <input type="text" placeholder="rack name" class="rackname"></imput>
   <span>
-  <button class="save btn btn-block btn-lg btn-success" id="button">save</button>
-  <button class="trim btn btn-block btn-lg btn-warning" title="Delete all items outside the designated rack space" id="button">trim</button>
-  <button class="clear btn btn-block btn-lg btn-danger"  title="Delete all items and start again with a blank rack" id="button">clear</button>
+  <button class="save" data-theme="g" id="button">save</button>
+  <button class="trim" data-theme="e" title="Delete all items outside the designated rack space" id="button">trim</button>
+  <button class="clear" data-theme="d"  title="Delete all items and start again with a blank rack" id="button">clear</button>
 </span>
 <div></br></div>
 <div height=2px class="btn btn-block btn-lg btn-inverse"></div>
