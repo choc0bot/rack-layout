@@ -9,6 +9,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
 <!--<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />-->
 <!--<link rel="stylesheet" href="http://sitedbase/css/Flat-UI-master/css/flat-ui.css" type="text/css">-->
 <link rel="stylesheet" href="./css/jquery-mobile-flat-ui-theme/generated/jquery.mobile.flatui.min.css" type="text/css">
@@ -26,7 +27,7 @@ $( document ).ready(function() {
   $('.number').empty();
   $('.gamma li').remove();
   for (i=1;i<=value;i++){
-    $('.number').append('<li class="numeral">'+ i +'</li>');
+    $('.number').append('<li class="numeral">'+ ((value - i) + 1) +'</li>');
     $('.gamma').append('<li class="oneru blank">Blank</li>');
   }
 
@@ -39,9 +40,10 @@ $( ".racksize" ).on('slidestop', function(){
   $('.number').empty();
   //$('.gamma li').remove();
   for (i=1;i<=value;i++){
-    $('.number').append('<li class="numeral">'+ i +'</li>');
+    $('.number').append('<li class="numeral">'+ ((value - i) + 1) +'</li>');
     $('.gamma').append('<li class="oneru blank">Blank</li>');
   }
+  
 });
 
 $('.alpha').sortable({
@@ -88,7 +90,7 @@ $('.gamma').sortable({
 
 
 
-$(".trim").click( function()
+function trimFunction() 
   {
   var rsize = parseInt($( ".racksize" ).val());  
   //var rsize = parseInt($('.racksize :selected').text());
@@ -102,7 +104,9 @@ $(".trim").click( function()
     //var rsize = parseInt($('.racksize :selected').text());
     var value = rsize + $('.gamma .oneru').length + 2 * $('.gamma .tworu').length + 3 * $('.gamma .threeru').length; 
   }
-  });
+  };
+
+$(".trim").click(trimFunction);
 
 $(".clear").click( function()
     {
@@ -129,6 +133,21 @@ $(".clear").click( function()
 
 });
 
+
+$( document ).on( 'click', ".cleared", function()
+  {
+  var value = 12
+  //var value = $('.racksize :selected').text();
+  $('.gamma li').remove();
+  $('.number').empty();
+  for (i=1;i<=value;i++){
+    $('.number').append('<li class="numeral">'+ i +'</li>');
+    $('.gamma').append('<li class="oneru blank">Blank</li>');
+    };
+    history.back();
+});
+
+
 $(".save").click( function()
     {
       var rackdiagram = $('.gamma').html();
@@ -154,8 +173,6 @@ $(function() {
 </head>	
 
 <div class="dialog-confirm" title="Delete all?"></div>
-    <div ></div>
-
 
     <div data-role="header" >
       <a data-iconpos="notext" data-role="button" data-icon="home" title="Home">Home</a>
@@ -223,7 +240,7 @@ $(function() {
     <span>
       <button class="save" data-theme="g" id="button">save</button>
       <button class="trim" data-theme="e" title="Delete all items outside the designated rack space" id="button">trim</button>
-      <button class="clear" data-theme="d"  title="Delete all items and start again with a blank rack" id="button">clear</button>
+      <a href="dialog.html" data-role="button" data-theme="d" data-inline="true" data-rel="dialog" data-transition="slidedown">clear</a>
     </span>
     <h5>Trash</h5>
     <span class="trash" ><img src="./image/recyclebin.png" height="128" ></span>
@@ -231,4 +248,5 @@ $(function() {
 
 
 </div>
+
 </html>
