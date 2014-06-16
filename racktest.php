@@ -152,8 +152,8 @@ $(".save").click( function()
     {
       var rackdiagram = $('.gamma').html();
       var rackname = $('.rackname').val();
-      alert('saved '+ rackname);
       $.post("input_racksave.php", {rn: rackname, rd: rackdiagram});
+      alert('saved '+ rackname);
   });
 
 
@@ -164,7 +164,7 @@ $(function() {
 
 
 
-
+//end
 })
 
 
@@ -187,6 +187,9 @@ $(function() {
       <div >
         <li class="oneru switch">Cisco 3750 24 port</li>
         <li class="oneru switch">Cisco 3750 48 port</li>
+        <li class="oneru switch">Cisco 3750 24 port - fibre</li>
+        <li class="oneru switch">Cisco 3750 12 port - fibre</li>
+        <li class="oneru switch">Cisco 3750X 24 port</li>
         <li class="oneru switch">Cisco 3750X 48 port</li>
         <li class="oneru switch">Juniper SRX240</li>
         <li class="oneru switch">Cisco 1841</li>
@@ -222,6 +225,7 @@ $(function() {
         <li class="oneru blank">Blank</li>
         <li class="oneru misc">cable management</li>
         <li class="oneru misc">tray</li>
+        <li class="oneru misc">third part device</li>
       </div>
     </div>
   </div>
@@ -233,10 +237,10 @@ $(function() {
 
 
   <div class="beta rackdiv">
+    <input type="text" placeholder="rack name" class="rackname"></imput>
     <div data-role="fieldcontain" >
         <input class="racksize" type="range" name="slider" value="12" min="6" max="48" data-highlight="true" >
     </div>
-    <input type="text" placeholder="rack name" class="rackname"></imput>
     <span>
       <button class="save" data-theme="g" id="button">save</button>
       <button class="trim" data-theme="e" title="Delete all items outside the designated rack space" id="button">trim</button>
